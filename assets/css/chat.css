@@ -1,0 +1,568 @@
+﻿/* ==========================================================
+   NovaMind AI - Chat Theme
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Chat Background & Messages
+---------------------------------------------------------- */
+
+.stChatMessage {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, .04);
+}
+
+.stChatMessage[data-testid="chat-message-user"] {
+    background: #F3F4F6;
+    border-left: 4px solid #7C3AED;
+}
+
+.stChatMessage[data-testid="chat-message-assistant"] {
+    background: #FFFFFF;
+    border-left: 4px solid #10B981;
+}
+
+/* ----------------------------------------------------------
+   Chat Input Default Fallback
+---------------------------------------------------------- */
+
+.stChatInput {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, .05);
+}
+
+.stChatInput textarea {
+    color: #111827;
+    background: transparent;
+}
+
+/* ----------------------------------------------------------
+   Toolbar & Welcome Panel
+---------------------------------------------------------- */
+
+.chat-toolbar {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, .04);
+}
+
+.chat-welcome {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+}
+
+/* ----------------------------------------------------------
+   Suggested Prompt Buttons
+---------------------------------------------------------- */
+
+.chat-prompt button {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 14px;
+    color: #111827;
+    transition: all .25s ease;
+}
+
+.chat-prompt button:hover {
+    border-color: #7C3AED;
+    background: #F8FAFC;
+    color: #7C3AED;
+}
+
+/* ----------------------------------------------------------
+   Info Badges & System Alerts
+---------------------------------------------------------- */
+
+.stInfo {
+    border-radius: 14px;
+    border: 1px solid #DDD6FE;
+    background: #F5F3FF;
+}
+
+.stSuccess {
+    border-radius: 14px;
+}
+
+/* ----------------------------------------------------------
+   Dividers
+---------------------------------------------------------- */
+
+div[data-testid="stDivider"],
+hr {
+    display: none !important;
+}
+
+/* ----------------------------------------------------------
+   Typography & Scaling
+---------------------------------------------------------- */
+
+.stChatMessage .stMarkdown,
+.stChatMessage .stMarkdown p,
+.stChatMessage .stMarkdown li {
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+}
+
+.stChatMessage .stMarkdown strong {
+    font-size: 18px !important;
+}
+
+.stChatMessage .stMarkdown h1 { font-size: 26px !important; }
+.stChatMessage .stMarkdown h2 { font-size: 23px !important; }
+.stChatMessage .stMarkdown h3 { font-size: 20px !important; }
+
+.stChatMessage .stMarkdown code {
+    font-size: 16px !important;
+}
+
+/* ==========================================================
+   Inline Message Editing (Pill Shape)
+   ========================================================== */
+
+div[data-testid="chat-message-user"] div[data-testid="stHorizontalBlock"] button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #94A3B8 !important;
+    font-size: 15px !important;
+    padding: 2px 6px !important;
+    min-height: unset !important;
+}
+
+div[data-testid="chat-message-user"] div[data-testid="stHorizontalBlock"] button:hover {
+    color: #1E293B !important;
+    background: transparent !important;
+}
+
+div[data-testid="chat-message-user"] div[data-testid="stTextInput"] div[data-baseweb="base-input"],
+div[data-testid="chat-message-user"] div[data-testid="stTextInput"] div[data-baseweb="input"] {
+    background: #FFFFFF !important;
+    border: 1px solid #94A3B8 !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
+    padding: 2px 14px !important;
+}
+
+div[data-testid="chat-message-user"] div[data-testid="stTextInput"] div[data-baseweb="input"]:focus-within {
+    border-color: #475569 !important;
+}
+
+div[data-testid="chat-message-user"] div[data-testid="stTextInput"] input {
+    background: transparent !important;
+    color: #0F172A !important;
+    font-size: 16px !important;
+    border: none !important;
+    outline: none !important;
+    padding: 8px 6px !important;
+}
+
+button[key*="cancel_btn_"] {
+    background: transparent !important;
+    border: none !important;
+    color: #1E293B !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    border-radius: 9999px !important;
+    padding: 6px 16px !important;
+}
+
+button[key*="cancel_btn_"]:hover {
+    background: #F1F5F9 !important;
+    color: #0F172A !important;
+}
+
+button[key*="update_btn_"] {
+    background: #E2E8F0 !important;
+    border: none !important;
+    color: #475569 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    border-radius: 9999px !important;
+    padding: 6px 18px !important;
+}
+
+button[key*="update_btn_"]:hover {
+    background: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* ==========================================================
+   WORKSPACE CANVAS (Wider view, clean clearances)
+   ========================================================== */
+
+.main .block-container,
+div[data-testid="stMainBlockContainer"] {
+    max-width: 1400px !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 5.4rem !important;    /* Clears fixed top navbar */
+    padding-bottom: 2rem !important;   /* Tight bottom padding */
+    min-height: unset !important;
+    display: block !important;
+}
+
+/* ==========================================================
+   1. TOP NAVBAR (Straight, Aligned, 44px Fixed Height)
+   ========================================================== */
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) {
+    position: fixed !important;
+    top: 2.75rem !important;
+    left: 20rem !important;
+    right: 2rem !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    z-index: 998 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    padding: 6px 14px !important;
+    border-radius: 18px !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Force each column flexbox to vertically center its contents without droop */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) > div[data-testid="column"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;
+    margin: 0 !important;
+    padding: 0 4px !important;
+}
+
+/* Eliminate default Streamlit wrapper margin offsets */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stTextInput"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) .element-container {
+    width: 100% !important;
+    height: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Unified styling for ALL buttons in navbar (← Back, ⋮ Menu, ⚙️, 🔔, 👤 Profile) */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"] > button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"] > button {
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    line-height: 42px !important;
+    margin: 0 !important;
+    border: 1px solid #E2E8F0 !important;
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #1E293B !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 0 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    vertical-align: middle !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button:hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"] > button:hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"] > button:hover {
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* Match search bar input to 44px button height */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="base-input"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="input"] {
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 12px !important;
+    background: #FFFFFF !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) input {
+    height: 42px !important;
+    font-size: 14px !important;
+    padding: 0 12px !important;
+    margin: 0 !important;
+}
+
+/* Sidebar collapsed fallback */
+section[data-testid="stSidebar"][aria-expanded="false"] ~ section.main div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) {
+    left: 5rem !important;
+    max-width: calc(100vw - 7rem) !important;
+}
+
+.navbar-brand-tag {
+    font-weight: 700;
+    font-size: 16px;
+    color: #2563EB;
+    text-align: center;
+    line-height: 44px;
+}
+
+/* ==========================================================
+   2. FLOATING BOTTOM CHATBAR (Exact Match to Image 2)
+   ========================================================== */
+
+/* Flexible container that pushes omnibar down to viewport bottom */
+.main .block-container {
+    min-height: calc(100vh - 2rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-bottom: 24px !important;
+}
+
+/* Floating Capsule Container */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
+    position: sticky !important;
+    bottom: 18px !important;
+    margin-top: 1.25rem !important;     
+    margin-bottom: 0.5rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 960px !important;
+    width: 100% !important;
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 9999px !important;
+    padding: 6px 14px !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06) !important;
+    display: flex !important;
+    align-items: center !important;
+    z-index: 999 !important;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor):hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor):focus-within {
+    border-color: #CBD5E1 !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09) !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 1. Left [+ ⌵] Pill Button */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child div[data-testid="stPopover"] > button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child button[data-testid="stPopoverButton"] {
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 20px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    color: #1E293B !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 0 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child button:hover {
+    background-color: #F1F5F9 !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+}
+
+/* 2. Text Input: Soft Grey Rounded Container inside Capsule */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stTextInput"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 6px !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-baseweb="base-input"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-baseweb="input"] {
+    background-color: #F1F5F9 !important;
+    background: #F1F5F9 !important;
+    border: none !important;
+    border-radius: 12px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    padding: 0 16px !important;
+    box-shadow: none !important;
+    outline: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) input {
+    height: 38px !important;
+    font-size: 14px !important;
+    color: #0F172A !important;
+    -webkit-text-fill-color: #0F172A !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) input::placeholder {
+    color: #94A3B8 !important;
+    -webkit-text-fill-color: #94A3B8 !important;
+    font-size: 14px !important;
+}
+
+/* 3. Model Dropdown (AI Chat ⌵) */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(3) button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(3) div[data-testid="stPopover"] > button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(3) button[data-testid="stPopoverButton"] {
+    background: transparent !important;
+    border: none !important;
+    color: #1E293B !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    padding: 0 8px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(3) button:hover {
+    color: #2563EB !important;
+    background: rgba(37, 99, 235, 0.05) !important;
+    border-radius: 8px !important;
+}
+
+/* 4. Microphone Button */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(4) button {
+    background: transparent !important;
+    border: none !important;
+    color: #1E293B !important;
+    font-size: 18px !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(4) button:hover {
+    background: #F1F5F9 !important;
+    color: #0F172A !important;
+}
+
+/* 5. Send Button: Solid Vibrant Blue Circle with White Arrow */
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:last-child button {
+    background-color: #2563EB !important;
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:last-child button p,
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:last-child button span {
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    line-height: normal !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:last-child button:hover {
+    background-color: #1D4ED8 !important;
+    background: #1D4ED8 !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45) !important;
+    transform: scale(1.06) !important;
+}
+
+/* Suggested Prompts Spacing */
+.chat-prompt,
+div:has(> .chat-prompt) {
+    margin-bottom: 1.5rem !important;
+}
+
+/* ==========================================================
+   Responsive & Viewport Resilience
+   ========================================================== */
+
+/* 1. Ensure fixed elements adapt when sidebar is toggled or screen narrows */
+@media (max-width: 1024px) {
+    div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor),
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
+        left: 5rem !important;
+        right: 1rem !important;
+        max-width: calc(100vw - 6rem) !important;
+    }
+}
+
+/* 2. Prevent content overflow behind fixed elements on smaller screens */
+@media (max-width: 768px) {
+    .main .block-container,
+    div[data-testid="stMainBlockContainer"] {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 6rem !important;
+        padding-bottom: 6rem !important;
+    }
+}

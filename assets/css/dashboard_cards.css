@@ -1,0 +1,155 @@
+/* ==========================================================
+   NovaMind AI Dashboard Cards
+   ========================================================== */
+
+/* Dashboard Card */
+
+.dashboard-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 4px 14px rgba(15,23,42,.05);
+
+    transition:all .25s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* Top Purple Accent */
+
+.dashboard-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:linear-gradient(
+        90deg,
+        #7C3AED,
+        #8B5CF6
+    );
+
+}
+
+
+/* Hover */
+
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 30px rgba(124,58,237,.14);
+
+    border-color:#C4B5FD;
+
+}
+
+
+/* Icon Container */
+
+.dashboard-icon{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#F3E8FF;
+
+    color:#7C3AED;
+
+    font-size:24px;
+
+}
+
+
+/* Card Title */
+
+.dashboard-title{
+
+    font-size:15px;
+
+    color:#64748B;
+
+    font-weight:600;
+
+}
+
+
+/* Main Value */
+
+.dashboard-value{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+
+/* Growth Text */
+
+.dashboard-growth{
+
+    color:#10B981;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+
+/* Sparkline */
+
+.dashboard-chart{
+
+    opacity:.9;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.dashboard-card{
+
+    padding:18px;
+
+}
+
+.dashboard-value{
+
+    font-size:30px;
+
+}
+
+}

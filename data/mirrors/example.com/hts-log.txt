@@ -1,0 +1,11 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 31 Aug 2026 13:37:45 at https://example.com +*.html +*.htm -*.jpg -*.png -*.mp4 -*.zip
+("C:\Program Files\WinHTTrack\httrack.EXE" https://example.com -O data\mirrors\example.com -r1 +*.html +*.htm -*.jpg -*.png -*.mp4 -*.zip -q )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 seconds : 2 links scanned, 1 files written (559 bytes overall) [1351 bytes received at 1351 bytes/sec], 947 bytes transferred using HTTP compression in 2 files, ratio 81%
+(No errors, 0 warnings, 0 messages)

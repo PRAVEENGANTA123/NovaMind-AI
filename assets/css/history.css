@@ -1,0 +1,40 @@
+/* =========================================
+   NovaMind AI - History Stylesheet
+   ========================================= */
+
+.history-card {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+.history-card:hover {
+    border-color: #2563EB;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.history-prompt {
+    font-weight: 600;
+    color: #0F172A;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.history-response {
+    color: #64748B;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.history-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #EFF6FF;
+    color: #2563EB;
+}

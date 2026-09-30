@@ -1,0 +1,328 @@
+/*
+==========================================================
+NovaMind AI Dashboard
+Modern Professional UI
+==========================================================
+*/
+
+:root{
+
+    --primary:#2563EB;
+    --primary-light:#3B82F6;
+    --success:#16A34A;
+    --warning:#F59E0B;
+    --danger:#DC2626;
+
+    --background:#F8FAFC;
+    --surface:#FFFFFF;
+
+    --border:#E2E8F0;
+
+    --text:#0F172A;
+    --text-light:#64748B;
+
+    --shadow-sm:0 4px 12px rgba(15,23,42,.05);
+    --shadow-md:0 12px 28px rgba(15,23,42,.08);
+    --shadow-lg:0 18px 40px rgba(37,99,235,.12);
+
+    --radius:18px;
+
+}
+
+/*==========================================================
+Page
+==========================================================*/
+
+.stApp{
+
+    background:var(--background);
+
+}
+
+/*==========================================================
+Main Container
+==========================================================*/
+
+.main .block-container{
+
+    max-width:1600px;
+
+    padding-top:25px;
+
+    padding-left:32px;
+
+    padding-right:32px;
+
+    padding-bottom:40px;
+
+}
+
+/*==========================================================
+Containers
+==========================================================*/
+
+div[data-testid="stVerticalBlockBorderWrapper"]{
+
+    background:var(--surface);
+
+    border-radius:var(--radius);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.3s ease;
+
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"]:hover{
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/*==========================================================
+Titles
+==========================================================*/
+
+h1{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+h2{
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+h3{
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text-light);
+
+}
+
+/*==========================================================
+Metrics
+==========================================================*/
+
+[data-testid="metric-container"]{
+
+    background:white;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    padding:18px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/*==========================================================
+Buttons
+==========================================================*/
+
+.stButton>button{
+
+    border-radius:12px;
+
+    border:none;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.stButton>button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/*==========================================================
+Inputs
+==========================================================*/
+
+.stTextInput input{
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+}
+
+.stSelectbox div{
+
+    border-radius:12px;
+
+}
+
+/*==========================================================
+Expander
+==========================================================*/
+
+details{
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+/*==========================================================
+Progress
+==========================================================*/
+
+.stProgress{
+
+    margin-top:8px;
+
+}
+
+/*==========================================================
+Plotly
+==========================================================*/
+
+.js-plotly-plot{
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+/*==========================================================
+Divider
+==========================================================*/
+
+hr{
+
+    margin:28px 0;
+
+    border:none;
+
+    border-top:1px solid var(--border);
+
+}
+
+/*==========================================================
+Sidebar
+==========================================================*/
+
+section[data-testid="stSidebar"]{
+
+    background:#FFFFFF;
+
+    border-right:1px solid var(--border);
+
+}
+
+/*==========================================================
+Scrollbar
+==========================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+
+}
+
+/*==========================================================
+Animations
+==========================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.block-container{
+
+    animation:fadeUp .35s ease;
+
+}
+
+/*==========================================================
+Responsive
+==========================================================*/
+
+@media(max-width:1200px){
+
+.main .block-container{
+
+padding-left:20px;
+
+padding-right:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.main .block-container{
+
+padding-left:12px;
+
+padding-right:12px;
+
+padding-top:15px;
+
+}
+
+h1{
+
+font-size:1.6rem;
+
+}
+
+}

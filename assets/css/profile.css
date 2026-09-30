@@ -1,0 +1,208 @@
+/* ==========================================================
+   NovaMind AI - Profile
+========================================================== */
+
+.block-container{
+
+    padding-top:2rem;
+
+    padding-left:2.5rem;
+
+    padding-right:2.5rem;
+
+    max-width:1450px;
+
+}
+
+/* ==========================================================
+   Profile Header
+========================================================== */
+
+.profile-header{
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #1E40AF
+    );
+
+    border-radius:22px;
+
+    padding:32px;
+
+    color:white;
+
+    margin-bottom:25px;
+
+    box-shadow:0 12px 35px rgba(37,99,235,.20);
+
+}
+
+.profile-header h1{
+
+    color:white;
+
+    margin:0;
+
+    font-size:34px;
+
+}
+
+.profile-header p{
+
+    color:#E2E8F0;
+
+    margin-top:8px;
+
+    font-size:15px;
+
+}
+
+.profile-badge{
+
+    background:rgba(255,255,255,.18);
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    display:inline-block;
+
+    margin-top:20px;
+
+}
+
+/* ==========================================================
+   Cards
+========================================================== */
+
+div[data-testid="stVerticalBlockBorderWrapper"]{
+
+    border-radius:18px !important;
+
+    border:1px solid #E2E8F0 !important;
+
+    background:white;
+
+    box-shadow:0 6px 18px rgba(15,23,42,.05);
+
+}
+
+/* ==========================================================
+   Inputs
+========================================================== */
+
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox div[data-baseweb="select"]{
+
+    border-radius:12px !important;
+
+    border:1px solid #CBD5E1 !important;
+
+    background:#F8FAFC !important;
+
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus{
+
+    border-color:#2563EB !important;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.10) !important;
+
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.stButton button{
+
+    border-radius:12px !important;
+
+    height:46px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.stButton button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   Avatar
+========================================================== */
+
+img{
+
+    border-radius:50% !important;
+
+    border:5px solid white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+/* ==========================================================
+   Metrics
+========================================================== */
+
+div[data-testid="metric-container"]{
+
+    background:#F8FAFC;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    border:1px solid #E2E8F0;
+
+}
+
+/* ==========================================================
+   Divider
+========================================================== */
+
+hr{
+
+    margin-top:30px;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media(max-width:900px){
+
+.block-container{
+
+padding-left:1rem;
+
+padding-right:1rem;
+
+}
+
+.profile-header{
+
+padding:22px;
+
+}
+
+.profile-header h1{
+
+font-size:28px;
+
+}
+
+}

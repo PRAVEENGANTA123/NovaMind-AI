@@ -1,0 +1,8 @@
+https://example.com -O "data\\mirrors\\example.com" -r1 +*.html +*.htm -*.jpg -*.png -*.mp4 -*.zip -q
+File generated automatically on Mon, 31 Aug 2026 13:37:45, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

@@ -1,0 +1,19 @@
+/* =========================================
+   NovaMind AI - PDF Chat Stylesheet
+   ========================================= */
+
+.pdf-chat-container {
+    border-radius: 12px;
+    padding: 20px;
+    background: #FAFAFA;
+}
+
+.source-card {
+    background: #F8FAFC;
+    border-left: 3px solid #2563EB;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #334155;
+}

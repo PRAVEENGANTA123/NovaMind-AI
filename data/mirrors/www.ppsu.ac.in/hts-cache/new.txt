@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+13:34:27	70/70	---M--	200	added ('OK')	text/plain	date:Thu,%2019%20Dec%202024%2007:08:05%20GMT	https://www.ppsu.ac.in/robots.txt		(from )
+13:34:28	156582/156582	---M-Z	200	added ('OK')	text/html	date:Mon,%2031%20Aug%202026%2008:04:26%20GMT	https://www.ppsu.ac.in/	data/mirrors/www.ppsu.ac.in/www.ppsu.ac.in/index.html	(from )

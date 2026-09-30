@@ -1,0 +1,173 @@
+/* ==========================================================
+   NovaMind AI - Unified Navigation Bar Theme
+   Ensures ALL navbar elements (Back, Menu, Search, Settings,
+   Notifications, Profile) have identical 44px height, matching
+   borders, and rock-solid positioning across all pages.
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   1. Navbar Container & Layout
+   ---------------------------------------------------------- */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 0 !important;
+    margin-bottom: 24px !important;
+    padding: 6px 0 10px 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stColumn"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+}
+
+/* ----------------------------------------------------------
+   2. All Navbar Buttons: ← Back, Menu, Settings, Notifications, Profile
+   Strictly enforced 44px height, #FFFFFF background, #E2E8F0 border
+   ---------------------------------------------------------- */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"] > button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"] > button,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[data-testid="stPopoverButton"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[kind="secondary"] {
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    line-height: 42px !important;
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    color: #1E293B !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 0 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    width: 100% !important;
+    margin: 0 !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+}
+
+/* Hover & Active States */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button:hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"] > button:hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"] > button:hover,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[data-testid="stPopoverButton"]:hover {
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+    transform: none !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button:active,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stButton"] > button:active,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stPopover"] > button:active {
+    background-color: #F1F5F9 !important;
+    border-color: #94A3B8 !important;
+}
+
+/* Ensure typography inside all buttons is identical */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button p,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button span,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button div {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #1E293B !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
+}
+
+/* ----------------------------------------------------------
+   3. Search Bar: Matching 44px Height & 10px Border Radius
+   ---------------------------------------------------------- */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-testid="stTextInput"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="base-input"],
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="input"] {
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    background-color: #F1F5F9 !important;
+    background: #F1F5F9 !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    padding: 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="base-input"]:focus-within,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) div[data-baseweb="input"]:focus-within {
+    background-color: #FFFFFF !important;
+    border-color: #2563EB !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) input {
+    height: 42px !important;
+    font-size: 14px !important;
+    color: #0F172A !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) input::placeholder {
+    color: #94A3B8 !important;
+    font-size: 14px !important;
+}
+
+/* ----------------------------------------------------------
+   4. Icon and Profile Buttons Custom Accents
+   ---------------------------------------------------------- */
+/* Settings Gear Icon */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[help="Settings"] p,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[help="Settings"] span {
+    color: #7C3AED !important;
+    font-size: 16px !important;
+}
+
+/* Notification Bell Icon */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[help="Notifications"] p,
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[help="Notifications"] span {
+    color: #F59E0B !important;
+    font-size: 16px !important;
+}
+
+/* Profile Button */
+div[data-testid="stHorizontalBlock"]:has(#novamind-navbar-anchor) button[help="View Profile"] {
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* Brand tag when on Dashboard */
+.navbar-brand-tag {
+    font-weight: 700;
+    font-size: 16px;
+    color: #2563EB;
+    text-align: center;
+    line-height: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

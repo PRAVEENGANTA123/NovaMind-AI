@@ -1,0 +1,328 @@
+ /* ==========================================
+   NovaMind AI v2.0
+   Register Page
+========================================== */
+
+/* ==========================================
+   Background
+========================================== */
+
+.stApp{
+
+    background:
+        radial-gradient(circle at top left,#DBEAFE 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#BFDBFE 0%,transparent 30%),
+        linear-gradient(
+            135deg,
+            #F8FAFC 0%,
+            #EEF5FF 45%,
+            #FFFFFF 100%
+        ) !important;
+
+}
+
+/* ==========================================
+   Main Container
+========================================== */
+
+.block-container{
+
+    max-width:540px !important;
+
+    padding-top:50px !important;
+
+    padding-bottom:40px !important;
+
+}
+
+/* ==========================================
+   Hero
+========================================== */
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.hero h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+    margin-bottom:10px;
+
+}
+
+.hero p{
+
+    color:#64748B;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+   Logo
+========================================== */
+
+[data-testid="stImage"]{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:20px;
+
+}
+
+[data-testid="stImage"] img{
+
+    border-radius:18px;
+
+}
+
+/* ==========================================
+   Register Card
+========================================== */
+
+div[data-testid="stForm"]{
+
+    background:rgba(255,255,255,.95) !important;
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid #E2E8F0 !important;
+
+    border-radius:22px !important;
+
+    padding:35px !important;
+
+    box-shadow:
+        0 20px 50px rgba(15,23,42,.08);
+
+    transition:.3s;
+
+}
+
+div[data-testid="stForm"]:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 30px 60px rgba(37,99,235,.14);
+
+}
+
+/* ==========================================
+   Labels
+========================================== */
+
+label,
+div[data-testid="stWidgetLabel"] p{
+
+    color:#1E293B !important;
+
+    font-weight:600 !important;
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+   Inputs
+========================================== */
+
+.stTextInput input{
+
+    height:48px !important;
+
+    background:#F8FAFC !important;
+
+    border:1px solid #CBD5E1 !important;
+
+    border-radius:12px !important;
+
+    color:#0F172A !important;
+
+    font-size:15px !important;
+
+    transition:.25s;
+
+}
+
+.stTextInput input:focus{
+
+    border:1px solid #2563EB !important;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.15) !important;
+
+}
+
+/* ==========================================
+   Checkbox
+========================================== */
+
+.stCheckbox{
+
+    margin-top:12px;
+
+    margin-bottom:12px;
+
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.stButton>button,
+div[data-testid="stFormSubmitButton"]>button{
+
+    width:100% !important;
+
+    height:50px !important;
+
+    border:none !important;
+
+    border-radius:12px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563EB,
+            #1D4ED8
+        ) !important;
+
+    color:white !important;
+
+    font-size:16px !important;
+
+    font-weight:600 !important;
+
+    transition:.25s;
+
+}
+
+.stButton>button:hover,
+div[data-testid="stFormSubmitButton"]>button:hover{
+
+    background:
+        linear-gradient(
+            135deg,
+            #1D4ED8,
+            #1E40AF
+        ) !important;
+
+    color:white !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.25);
+
+}
+
+/* ==========================================
+   Divider
+========================================== */
+
+hr{
+
+    margin:28px 0 !important;
+
+    border-top:1px solid #E2E8F0 !important;
+
+}
+
+/* ==========================================
+   Alerts
+========================================== */
+
+div[data-baseweb="notification"]{
+
+    border-radius:14px !important;
+
+}
+
+/* ==========================================
+   Footer
+========================================== */
+
+.stCaption{
+
+    text-align:center;
+
+    color:#64748B !important;
+
+    font-size:13px !important;
+
+}
+
+/* ==========================================
+   Hide Streamlit
+========================================== */
+
+header,
+footer,
+#MainMenu,
+[data-testid="stHeader"]{
+
+    display:none !important;
+
+}
+
+[data-testid="stSidebarNav"],
+[data-testid="stSidebarNavSeparator"]{
+
+    display:none !important;
+
+}
+
+/* Hide Form Hint */
+
+div[data-testid="InputInstructions"],
+p[data-testid="InputInstructions"]{
+
+    display:none !important;
+
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width:768px){
+
+    .block-container{
+
+        max-width:95% !important;
+
+        padding-left:20px !important;
+
+        padding-right:20px !important;
+
+        padding-top:30px !important;
+
+    }
+
+    div[data-testid="stForm"]{
+
+        padding:25px !important;
+
+    }
+
+    .hero h1{
+
+        font-size:34px;
+
+    }
+
+}

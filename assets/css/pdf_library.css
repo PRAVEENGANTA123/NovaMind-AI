@@ -1,0 +1,30 @@
+/* =========================================
+   NovaMind AI - PDF Library Stylesheet
+   ========================================= */
+
+.pdf-card {
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pdf-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border-color: #3B82F6;
+}
+
+.pdf-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.pdf-meta {
+    font-size: 12px;
+    color: #94A3B8;
+}

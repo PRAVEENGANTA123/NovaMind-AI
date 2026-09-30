@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+13:37:46	388/388	---MCZ	404	error ('Not%20Found')	text/html	date:Mon,%2031%20Aug%202026%2008:07:45%20GMT	https://example.com/robots.txt		(from )
+13:37:46	559/559	---MCZ	200	added ('OK')	text/html	date:Sun,%2030%20Aug%202026%2004:11:49%20GMT	https://example.com/	data/mirrors/example.com/example.com/index.html	(from )

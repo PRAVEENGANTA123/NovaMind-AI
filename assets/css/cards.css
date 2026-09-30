@@ -1,0 +1,205 @@
+/* ==========================================================
+   NovaMind AI
+   Global Card Theme
+   ========================================================== */
+
+/* ---------------------------------------
+   Base Card
+--------------------------------------- */
+
+.card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 4px 12px rgba(15,23,42,.05);
+
+    transition:all .25s ease;
+
+}
+
+
+/* Hover */
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 14px 32px rgba(15,23,42,.08);
+
+    border-color:#DDD6FE;
+
+}
+
+
+/* ---------------------------------------
+   Card Header
+--------------------------------------- */
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+
+/* ---------------------------------------
+   Title
+--------------------------------------- */
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+
+/* ---------------------------------------
+   Subtitle
+--------------------------------------- */
+
+.card-subtitle{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+/* ---------------------------------------
+   Card Body
+--------------------------------------- */
+
+.card-body{
+
+    color:#374151;
+
+}
+
+
+/* ---------------------------------------
+   Footer
+--------------------------------------- */
+
+.card-footer{
+
+    margin-top:20px;
+
+    padding-top:16px;
+
+    border-top:1px solid #E5E7EB;
+
+}
+
+
+/* ---------------------------------------
+   Icon Box
+--------------------------------------- */
+
+.card-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F5F3FF;
+
+    color:#7C3AED;
+
+    font-size:22px;
+
+}
+
+
+/* ---------------------------------------
+   Statistics
+--------------------------------------- */
+
+.card-stat{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+
+/* ---------------------------------------
+   Labels
+--------------------------------------- */
+
+.card-label{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+/* ---------------------------------------
+   Progress
+--------------------------------------- */
+
+.card-progress{
+
+    height:8px;
+
+    border-radius:30px;
+
+    background:#EEF2F7;
+
+}
+
+.card-progress-fill{
+
+    background:#7C3AED;
+
+    border-radius:30px;
+
+}
+
+
+/* ---------------------------------------
+   Lists
+--------------------------------------- */
+
+.card-list-item{
+
+    padding:12px 0;
+
+    border-bottom:1px solid #F1F5F9;
+
+}
+
+.card-list-item:last-child{
+
+    border-bottom:none;
+
+}

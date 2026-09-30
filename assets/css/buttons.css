@@ -1,0 +1,189 @@
+/* ==========================================================
+   NovaMind AI Buttons
+   ========================================================== */
+
+/* ----------------------------------------------------------
+   Default Streamlit Button
+---------------------------------------------------------- */
+
+.stButton > button{
+
+    width:100%;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#FFFFFF;
+
+    color:#111827;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+    box-shadow:0 2px 8px rgba(15,23,42,.05);
+
+}
+
+
+/* Hover */
+
+.stButton > button:hover{
+
+    background:#F8FAFC;
+
+    color:#7C3AED;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(124,58,237,.15);
+
+}
+
+
+/* Click */
+
+.stButton > button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* Focus */
+
+.stButton > button:focus{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(124,58,237,.20);
+
+}
+
+
+/* ----------------------------------------------------------
+   Primary Button
+---------------------------------------------------------- */
+
+.primary-button button{
+
+    background:linear-gradient(
+        135deg,
+        #7C3AED,
+        #8B5CF6
+    );
+
+    color:white;
+
+}
+
+.primary-button button:hover{
+
+    filter:brightness(1.05);
+
+}
+
+
+/* ----------------------------------------------------------
+   Danger Button
+---------------------------------------------------------- */
+
+.danger-button button{
+
+    background:#EF4444;
+
+    color:white;
+
+}
+
+.danger-button button:hover{
+
+    background:#DC2626;
+
+}
+
+
+/* ----------------------------------------------------------
+   Success Button
+---------------------------------------------------------- */
+
+.success-button button{
+
+    background:#10B981;
+
+    color:white;
+
+}
+
+.success-button button:hover{
+
+    background:#059669;
+
+}
+
+
+/* ----------------------------------------------------------
+   Secondary Button
+---------------------------------------------------------- */
+
+.secondary-button button{
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+}
+
+
+/* ----------------------------------------------------------
+   Icon Buttons
+---------------------------------------------------------- */
+
+.icon-button button{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    background:#FFFFFF;
+
+    border:1px solid #E5E7EB;
+
+    color:#64748B;
+
+}
+
+.icon-button button:hover{
+
+    border-color:#7C3AED;
+
+    color:#7C3AED;
+
+    background:#F8FAFC;
+
+}
+
+
+/* ----------------------------------------------------------
+   Disabled
+---------------------------------------------------------- */
+
+.stButton > button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}

@@ -1,0 +1,150 @@
+/* ==========================================================
+   NovaMind AI Sidebar Theme
+   ========================================================== */
+
+/* Sidebar */
+
+section[data-testid="stSidebar"]{
+
+    background:#0F172A !important;
+
+    color:#FFFFFF;
+
+    border-right:1px solid rgba(255,255,255,.06);
+
+}
+
+
+/* Sidebar Content */
+
+section[data-testid="stSidebar"] *{
+
+    color:#E5E7EB;
+
+}
+
+
+/* Logo */
+
+.sidebar-logo img{
+
+    border-radius:16px;
+
+}
+
+
+/* Sidebar Title */
+
+.sidebar-title{
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+}
+
+
+/* Subtitle */
+
+.sidebar-subtitle{
+
+    color:#94A3B8;
+
+}
+
+
+/* Divider */
+
+.sidebar-divider{
+
+    border-color:rgba(255,255,255,.08);
+
+}
+
+
+/* Navigation Buttons */
+
+.stSidebar .stButton>button{
+
+    background:transparent;
+
+    color:#CBD5E1;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:12px;
+
+    transition:.25s;
+
+}
+
+
+/* Hover */
+
+.stSidebar .stButton>button:hover{
+
+    background:#1E293B;
+
+    color:#FFFFFF;
+
+    border-color:#7C3AED;
+
+}
+
+
+/* Active Button */
+
+.sidebar-active button{
+
+    background:linear-gradient(90deg,#7C3AED,#8B5CF6);
+
+    color:white;
+
+    border:none;
+
+    font-weight:600;
+
+}
+
+
+/* New Chat */
+
+.new-chat button{
+
+    background:linear-gradient(135deg,#7C3AED,#8B5CF6);
+
+    color:white;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+}
+
+.new-chat button:hover{
+
+    filter:brightness(1.08);
+
+}
+
+
+/* Progress */
+
+.stProgress>div>div{
+
+    background:#7C3AED;
+
+}
+
+
+/* Profile Section */
+
+.sidebar-profile{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:18px;
+
+}

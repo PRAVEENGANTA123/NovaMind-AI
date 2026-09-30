@@ -1,0 +1,175 @@
+/* ==========================================================
+   NovaMind AI Animations
+   ========================================================== */
+
+/* ----------------------------------------
+   Global Transition
+---------------------------------------- */
+
+*{
+    transition:
+        background-color .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+/* ----------------------------------------
+   Page Fade
+---------------------------------------- */
+
+.main .block-container{
+
+    animation:pageFade .45s ease;
+
+}
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ----------------------------------------
+   Card Hover
+---------------------------------------- */
+
+.card,
+.dashboard-card{
+
+    will-change:transform;
+
+}
+
+.card:hover,
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ----------------------------------------
+   Button Hover
+---------------------------------------- */
+
+.stButton>button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.stButton>button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ----------------------------------------
+   Sidebar Navigation
+---------------------------------------- */
+
+.stSidebar .stButton>button{
+
+    transition:all .20s ease;
+
+}
+
+.stSidebar .stButton>button:hover{
+
+    padding-left:8px;
+
+}
+
+/* ----------------------------------------
+   Chat Messages
+---------------------------------------- */
+
+.stChatMessage{
+
+    animation:chatFade .35s ease;
+
+}
+
+@keyframes chatFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ----------------------------------------
+   Input Focus
+---------------------------------------- */
+
+input:focus,
+textarea:focus{
+
+    transition:.20s ease;
+
+}
+
+/* ----------------------------------------
+   Icons
+---------------------------------------- */
+
+.dashboard-icon,
+.card-icon{
+
+    transition:.25s ease;
+
+}
+
+.dashboard-card:hover .dashboard-icon,
+.card:hover .card-icon{
+
+    transform:rotate(8deg) scale(1.05);
+
+}
+
+/* ----------------------------------------
+   Progress Bar
+---------------------------------------- */
+
+.stProgress > div > div{
+
+    transition:width .5s ease;
+
+}
+
+/* ----------------------------------------
+   Scroll Animation
+---------------------------------------- */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
