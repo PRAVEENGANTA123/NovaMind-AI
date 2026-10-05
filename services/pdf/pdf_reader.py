@@ -13,12 +13,33 @@ can preserve document page information.
 
 import io
 import os
-
-import pymupdf
-import pytesseract
+import shutil
+import logging
 
 from PIL import Image
 from pypdf import PdfReader
+
+# Resilient PyMuPDF import
+try:
+    import pymupdf
+    HAS_PYMUPDF = True
+except ImportError:
+    try:
+        import fitz as pymupdf
+        HAS_PYMUPDF = True
+    except ImportError:
+        pymupdf = None
+        HAS_PYMUPDF = False
+
+# Resilient Tesseract import
+try:
+    import pytesseract
+    HAS_PYTESSERACT = True
+except ImportError:
+    pytesseract = None
+    HAS_PYTESSERACT = False
+
+logger = logging.getLogger("NovaMind.PDFReader")
 
 
 class PDFReaderService:
@@ -87,13 +108,15 @@ class PDFReaderService:
             # Configure Tesseract
             # =================================
 
-            if os.path.exists(
-                PDFReaderService.TESSERACT_PATH
-            ):
-
-                pytesseract.pytesseract.tesseract_cmd = (
-                    PDFReaderService.TESSERACT_PATH
-                )
+            if HAS_PYTESSERACT and pytesseract is not None:
+                if os.path.exists(PDFReaderService.TESSERACT_PATH):
+                    pytesseract.pytesseract.tesseract_cmd = (
+                        PDFReaderService.TESSERACT_PATH
+                    )
+                else:
+                    system_tesseract = shutil.which("tesseract")
+                    if system_tesseract:
+                        pytesseract.pytesseract.tesseract_cmd = system_tesseract
 
             # =================================
             # Open PDF with PyPDF
@@ -155,6 +178,27 @@ class PDFReaderService:
                 print("=" * 60)
 
                 ocr_pages = []
+
+                # Guard against missing PyMuPDF / Tesseract
+                if not HAS_PYMUPDF or pymupdf is None:
+                    return {
+                        "success": False,
+                        "text": "",
+                        "pages": total_pages,
+                        "page_texts": page_texts,
+                        "ocr_used": False,
+                        "error": "Scanned PDF detected, but PyMuPDF is not installed for page rasterization.",
+                    }
+
+                if not HAS_PYTESSERACT or pytesseract is None:
+                    return {
+                        "success": False,
+                        "text": "",
+                        "pages": total_pages,
+                        "page_texts": page_texts,
+                        "ocr_used": False,
+                        "error": "Scanned PDF detected, but pytesseract is not available.",
+                    }
 
                 # ---------------------------------
                 # Read PDF bytes
