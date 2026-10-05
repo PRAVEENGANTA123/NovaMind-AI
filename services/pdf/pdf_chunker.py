@@ -7,9 +7,44 @@ Splits extracted PDF text into
 AI-friendly chunks.
 """
 
-from langchain_text_splitters import (
-    RecursiveCharacterTextSplitter,
-)
+# ==========================================
+# Resilient Splitter Import
+# ==========================================
+
+try:
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+except ImportError:
+    try:
+        from langchain.text_splitter import RecursiveCharacterTextSplitter  # type: ignore[import-not-found]
+    except ImportError:
+        RecursiveCharacterTextSplitter = None
+
+
+class _FallbackTextSplitter:
+    """Internal pure-Python text splitter fallback if LangChain is absent."""
+
+    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200, separators=None):
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
+        self.separators = separators or ["\n\n", "\n", ". ", "? ", "! ", " ", ""]
+
+    def split_text(self, text: str) -> list[str]:
+        if not text:
+            return []
+        chunks = []
+        start = 0
+        text_len = len(text)
+        step = max(1, self.chunk_size - self.chunk_overlap)
+
+        while start < text_len:
+            end = min(start + self.chunk_size, text_len)
+            chunk = text[start:end].strip()
+            if chunk:
+                chunks.append(chunk)
+            if end >= text_len:
+                break
+            start += step
+        return chunks
 
 
 class TextSplitterService:
@@ -39,19 +74,34 @@ class TextSplitterService:
 
             return []
 
-        splitter = RecursiveCharacterTextSplitter(
-            chunk_size=chunk_size,
-            chunk_overlap=chunk_overlap,
-            separators=[
-                "\n\n",
-                "\n",
-                ". ",
-                "? ",
-                "! ",
-                " ",
-                "",
-            ],
-        )
+        if RecursiveCharacterTextSplitter is not None:
+            splitter = RecursiveCharacterTextSplitter(
+                chunk_size=chunk_size,
+                chunk_overlap=chunk_overlap,
+                separators=[
+                    "\n\n",
+                    "\n",
+                    ". ",
+                    "? ",
+                    "! ",
+                    " ",
+                    "",
+                ],
+            )
+        else:
+            splitter = _FallbackTextSplitter(
+                chunk_size=chunk_size,
+                chunk_overlap=chunk_overlap,
+                separators=[
+                    "\n\n",
+                    "\n",
+                    ". ",
+                    "? ",
+                    "! ",
+                    " ",
+                    "",
+                ],
+            )
 
         chunks = splitter.split_text(text)
 
