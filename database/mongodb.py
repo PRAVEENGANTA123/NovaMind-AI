@@ -3,11 +3,13 @@
 NovaMind AI - MongoDB Connection
 =========================================
 
-Creates a single MongoDB connection
-shared across the entire application.
+Creates a singleton MongoDB connection shared across the entire application,
+with cross-environment support for local dev (.env) and Streamlit Cloud (st.secrets),
+CA certificate validation via certifi, and automatic retry handling.
 """
 
 import os
+import certifi
 import streamlit as st
 from dotenv import load_dotenv
 from pymongo import MongoClient
@@ -27,21 +29,13 @@ def get_config_var(key: str, default: str = "") -> str:
             return str(st.secrets[key]).strip()
     except Exception:
         pass
-    return os.getenv(key, default).strip()
+    val = os.getenv(key)
+    return str(val).strip() if val is not None else default
 
 
 MONGO_URI = get_config_var("MONGO_URI", "")
 DATABASE_NAME = get_config_var("DATABASE_NAME", "NovaMindAI")
 GOOGLE_API_KEY = get_config_var("GOOGLE_API_KEY", "")
-
-# =====================================
-# Debug (Temporary)
-# =====================================
-
-print("=" * 60)
-print("MONGO_URI       :", "Found" if MONGO_URI else "Missing")
-print("DATABASE_NAME   :", repr(DATABASE_NAME))
-print("=" * 60)
 
 # =====================================
 # Validate Configuration
@@ -58,36 +52,53 @@ if not DATABASE_NAME:
     )
 
 # =====================================
-# MongoDB Client
+# MongoDB Client Initialization
 # =====================================
 
-try:
-    client = MongoClient(
-        MONGO_URI,
-        serverSelectionTimeoutMS=5000,
-        maxPoolSize=50,
-        minPoolSize=5,
-    )
+def init_mongo_client(uri: str) -> MongoClient:
+    """
+    Connect to MongoDB with TLS support for Atlas and fallback for local instances.
+    """
+    is_atlas = "mongodb.net" in uri or "ssl=true" in uri.lower() or "tls=true" in uri.lower()
 
+    client_kwargs = {
+        "serverSelectionTimeoutMS": 15000,  # 15s window for cloud replica set negotiation
+        "connectTimeoutMS": 10000,
+        "socketTimeoutMS": 45000,
+        "maxPoolSize": 50,
+        "minPoolSize": 1,
+        "retryWrites": True,
+        "retryReads": True,
+    }
+
+    if is_atlas:
+        client_kwargs["tls"] = True
+        client_kwargs["tlsCAFile"] = certifi.where()
+
+    return MongoClient(uri, **client_kwargs)
+
+
+try:
+    client = init_mongo_client(MONGO_URI)
+    # Ping database to verify active connection
     client.admin.command("ping")
     db = client[DATABASE_NAME]
 
     print("=" * 60)
-    print("MongoDB Connected Successfully")
+    print("✅ MongoDB Connected Successfully")
     print(f"Database : {DATABASE_NAME}")
     print("=" * 60)
 
 except ServerSelectionTimeoutError as e:
     print("=" * 60)
-    print("MongoDB Connection Failed")
-    print(e)
+    print("❌ MongoDB ServerSelectionTimeoutError: Failed to reach cluster")
+    print(f"Details  : {e}")
     print("=" * 60)
     raise
 
 except Exception as e:
     print("=" * 60)
-    print("MongoDB Error")
-    print(e)
+    print(f"❌ MongoDB Connection Error: {e}")
     print("=" * 60)
     raise
 
