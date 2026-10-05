@@ -28,9 +28,13 @@ Final AI Response
 
 from dataclasses import dataclass
 import io
+import logging
 import re
+import time
+from typing import Any, Dict, List, Optional
 
 from pypdf import PdfReader
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 from services.ai.reasoning_service import ReasoningService
 from services.ai.context_service import ContextService
@@ -45,6 +49,7 @@ from services.ai.website_retrieval_service import (
 )
 from services.ai.tool_router_service import ToolRouterService
 
+logger = logging.getLogger("NovaMind.AIOrchestrator")
 
 # ==========================================
 # Optional PDF services
@@ -64,6 +69,18 @@ try:
     from database.pdf_repository import PDFRepository
 except Exception:
     PDFRepository = None
+
+# ==========================================
+# Optional Database / Chat Repository
+# ==========================================
+
+try:
+    from database.chat_repository import ChatRepository
+except Exception:
+    try:
+        from services.chat.chat_service import ChatService as ChatRepository
+    except Exception:
+        ChatRepository = None
 
 
 # ==========================================
@@ -85,6 +102,63 @@ class AIResponse:
 # ==========================================
 
 class AIOrchestrator:
+
+    # ======================================
+    # Resilient Gemini Synthesis Call
+    # ======================================
+
+    @staticmethod
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=1, min=2, max=8),
+        retry=retry_if_exception_type(Exception),
+        reraise=True,
+    )
+    def _call_gemini_resilient(prompt_text: str) -> str:
+        """Call GeminiService with automatic backoff against transient 429/503 errors."""
+        gemini = GeminiService()
+        return gemini.generate(prompt_text)
+
+    # ======================================
+    # MongoDB Turn Persistence Helper
+    # ======================================
+
+    @staticmethod
+    def _persist_turn_safely(
+        email: Optional[str],
+        prompt: str,
+        answer: str,
+        intent: str,
+        confidence: float,
+        execution_time: str,
+    ) -> None:
+        """Safely commits the conversational turn to MongoDB without blocking."""
+        if not ChatRepository or not email:
+            return
+        try:
+            repo = ChatRepository()
+            if hasattr(repo, "save_chat"):
+                repo.save_chat(
+                    email=email,
+                    prompt=prompt,
+                    response=answer,
+                    intent=intent,
+                    confidence=confidence,
+                )
+            elif hasattr(repo, "save_turn"):
+                repo.save_turn(
+                    user_id=email,
+                    session_id="default_session",
+                    user_prompt=prompt,
+                    assistant_response=answer,
+                    metadata={
+                        "intent": intent,
+                        "confidence": confidence,
+                        "execution_time": execution_time,
+                    },
+                )
+        except Exception as db_err:
+            logger.debug(f"Non-blocking MongoDB persistence notice: {db_err}")
 
     # ======================================
     # URL Detection
@@ -830,6 +904,24 @@ Error:
         )
 
         # ==================================
+        # Dynamic Confidence Gating Intercept (C < 0.60)
+        # ==================================
+
+        if getattr(reasoning, "confidence", 1.0) < 0.60 and not pdf_mode and not uploaded_file and not active_url:
+            clarification_msg = (
+                "Your request appears ambiguous or lacks sufficient detail. "
+                "Could you please clarify your objective or provide the exact entity or topic you are asking about?"
+            )
+            return AIResponse(
+                prompt=prompt,
+                intent=reasoning.intent,
+                confidence=reasoning.confidence,
+                answer=clarification_msg,
+                execution_time="0.05s",
+                success=True,
+            )
+
+        # ==================================
         # Step 2 : Tool Router
         # ==================================
 
@@ -989,14 +1081,25 @@ Error:
 
                             source_text += "\n"
 
+                    final_pdf_answer = (
+                        pdf_answer
+                        + source_text
+                    ).strip()
+
+                    AIOrchestrator._persist_turn_safely(
+                        email=email,
+                        prompt=prompt,
+                        answer=final_pdf_answer,
+                        intent=reasoning.intent,
+                        confidence=reasoning.confidence,
+                        execution_time=execution.execution_time,
+                    )
+
                     return AIResponse(
                         prompt=prompt,
                         intent=reasoning.intent,
                         confidence=reasoning.confidence,
-                        answer=(
-                            pdf_answer
-                            + source_text
-                        ).strip(),
+                        answer=final_pdf_answer,
                         execution_time=(
                             execution.execution_time
                         ),
@@ -1169,16 +1272,27 @@ Error:
                             )
                             print("=" * 60)
 
+                            final_nav_answer = (
+                                navigation_answer
+                                + "\n\n"
+                                + "🔗 **URL Source**\n"
+                                + f"- {url_source}"
+                            ).strip()
+
+                            AIOrchestrator._persist_turn_safely(
+                                email=email,
+                                prompt=prompt,
+                                answer=final_nav_answer,
+                                intent=reasoning.intent,
+                                confidence=reasoning.confidence,
+                                execution_time=execution.execution_time,
+                            )
+
                             return AIResponse(
                                 prompt=prompt,
                                 intent=reasoning.intent,
                                 confidence=reasoning.confidence,
-                                answer=(
-                                    navigation_answer
-                                    + "\n\n"
-                                    + "🔗 **URL Source**\n"
-                                    + f"- {url_source}"
-                                ).strip(),
+                                answer=final_nav_answer,
                                 execution_time=(
                                     execution.execution_time
                                 ),
@@ -1739,9 +1853,7 @@ ANSWER STYLE
 
         try:
 
-            gemini = GeminiService()
-
-            answer = gemini.generate(
+            answer = AIOrchestrator._call_gemini_resilient(
                 ai_prompt
             )
 
@@ -1836,6 +1948,19 @@ ANSWER STYLE
             )
 
         # ==================================
+        # MongoDB Turn State Persistence
+        # ==================================
+
+        AIOrchestrator._persist_turn_safely(
+            email=email,
+            prompt=prompt,
+            answer=answer.strip(),
+            intent=reasoning.intent,
+            confidence=reasoning.confidence,
+            execution_time=execution.execution_time,
+        )
+
+        # ==================================
         # Step 17 : Final Response
         # ==================================
 
@@ -1849,4 +1974,3 @@ ANSWER STYLE
             ),
             success=success,
         )
-
