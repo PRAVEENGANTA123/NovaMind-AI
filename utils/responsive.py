@@ -1,9 +1,9 @@
-﻿import streamlit as st
+import streamlit as st
 
 def apply_responsive_layout():
     """
-    Applies responsive CSS across all devices (mobile, tablet, desktop),
-    specifically resolving bottom-dock clipping and oversized suggestion cards.
+    Forces fluid mobile styling and neutralizes circular/elliptical clipping
+    on mobile viewports for the chat input and action dock.
     """
     st.markdown("""
         
