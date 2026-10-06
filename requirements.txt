@@ -27,3 +27,5 @@ torchvision>=0.18.0
 fpdf2>=2.7.9
 
 fpdf2>=2.7.9
+
+email-validator>=2.1.0
