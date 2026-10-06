@@ -8,3 +8,5 @@ downloads/
 temp/
 exports/
 uploads/
+database/chroma/
+*.sqlite3
