@@ -21,3 +21,9 @@ beautifulsoup4>=4.12.0
 tenacity>=8.2.0
 bcrypt>=4.1.0
 fpdf2>=2.7.0
+fpdf2>=2.7.9
+reportlab>=4.1.0
+torchvision>=0.18.0
+fpdf2>=2.7.9
+
+fpdf2>=2.7.9

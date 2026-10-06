@@ -27,7 +27,11 @@ from components.history.history_list import (
 
 from services.chat.chat_service import ChatService
 
-
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 # ==========================================
 # Page Config
 # ==========================================

@@ -12,8 +12,12 @@ import streamlit as st
 from authentication.verify_otp import verify_otp
 from authentication.otp_service import resend_email_otp
 from utils.styles import load_css
-
-
+from utils.responsive import apply_responsive_layout
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 # ==========================================
 # Page Configuration
 # ==========================================
@@ -24,6 +28,8 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed"
 )
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
 
 # ==========================================
 # Hide Navigation

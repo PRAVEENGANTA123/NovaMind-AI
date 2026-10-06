@@ -5,8 +5,14 @@ Generates downloadable Markdown and PDF files for chat sessions.
 """
 
 from datetime import datetime
-from fpdf import FPDF
 import io
+
+try:
+    from fpdf import FPDF
+    HAS_FPDF = True
+except ImportError:
+    HAS_FPDF = False
+
 
 class ExportService:
 
@@ -29,6 +35,11 @@ class ExportService:
     @staticmethod
     def to_pdf(messages: list) -> bytes:
         """Converts chat transcript into a clean PDF document."""
+        if not HAS_FPDF:
+            # Resilient fallback if FPDF is not installed in the container
+            fallback_text = ExportService.to_markdown(messages)
+            return fallback_text.encode("utf-8")
+
         pdf = FPDF()
         pdf.set_auto_page_break(auto=True, margin=15)
         pdf.add_page()

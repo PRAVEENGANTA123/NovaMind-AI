@@ -13,8 +13,13 @@ from components.navbar import show_navbar
 
 from components.pdf.pdf_upload import show_pdf_upload
 from components.pdf.pdf_list import show_pdf_list
-
-
+from utils.responsive import apply_responsive_layout
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
+    
 # ==========================================
 # Page Configuration
 # ==========================================
@@ -23,7 +28,9 @@ st.set_page_config(
     page_title="NovaMind AI | PDF Library",
     page_icon="📄",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+apply_responsive_layout()
 
 st.session_state["current_page"] = "PDF Library"
 

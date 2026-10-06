@@ -13,17 +13,27 @@ from authentication.forgot_password import (
     verify_otp_and_reset_password,
 )
 from utils.styles import load_css
+from utils.responsive import apply_responsive_layout
 
-# ==========================================
-# Page Configuration
-# ==========================================
-
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | Forgot Password",
     page_icon="🔐",
     layout="centered",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
+
+
+# Rest of your app.py logic and navigation...
 
 def hide_sidebar():
     st.markdown("""

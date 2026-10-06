@@ -21,17 +21,30 @@ from components.dashboard_storage import show_dashboard_storage
 from components.dashboard_agents import show_dashboard_agents
 from components.dashboard_quick_actions import show_dashboard_quick_actions
 from components.recent_chats import show_recent_chats
-
-
+from utils.responsive import apply_responsive_layout
 # ==========================================
 # Page Config
 # ==========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | Dashboard",
-    page_icon="🤖",
+    page_icon="🧠",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
+
+
+# Rest of your app.py logic and navigation...
 
 # ==========================================
 # Session

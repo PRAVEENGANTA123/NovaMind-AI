@@ -13,11 +13,16 @@ from components.navbar import show_navbar
 
 from components.settings_header import show_settings_header
 from components.appearance_settings import show_appearance_settings
-
+from utils.responsive import apply_responsive_layout
 from services.settings_service import (
     load_settings,
     save_settings,
 )
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 
 # ==========================================
 # Page Configuration
@@ -27,7 +32,11 @@ st.set_page_config(
     page_title="NovaMind AI | Settings",
     page_icon="⚙️",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 st.session_state["current_page"] = "Settings"
 
  

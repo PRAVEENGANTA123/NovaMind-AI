@@ -7,14 +7,23 @@ NovaMind AI - Verify Email Page
 from pathlib import Path
 import streamlit as st
 
+from authentication import verify_email
 from authentication.verify_email import verify_email_token
 from utils.styles import load_css
+
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 
 # ==========================================
 # Load CSS
 # ==========================================
 
 load_css("login.css")
+
+import streamlit as st
 
 # ==========================================
 # Hide Navigation

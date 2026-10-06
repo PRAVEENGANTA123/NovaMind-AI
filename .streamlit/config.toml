@@ -1,0 +1,11 @@
+﻿[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false
+
+[runner]
+fastReruns = true

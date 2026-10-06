@@ -16,12 +16,17 @@ from components.navbar import show_navbar
 from components.pdf.chat_window import show_chat_window
 from components.pdf.chat_input import show_chat_input
 from components.pdf.source_cards import show_source_cards
-
 from services.pdf.pdf_service import PDFService
 from services.pdf.pdf_chat_history_service import (
     PDFChatHistoryService,
 )
+from utils.responsive import apply_responsive_layout
 
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 # ==========================================
 # Page Config
 # ==========================================
@@ -30,7 +35,9 @@ st.set_page_config(
     page_title="NovaMind AI | PDF Chat",
     page_icon="📄",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+apply_responsive_layout()
 
 # ==========================================
 # Authentication
