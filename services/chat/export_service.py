@@ -15,12 +15,19 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import (
-    Paragraph,
-    SimpleDocTemplate,
-    Spacer,
-)
+# ==========================================
+# Resilient PDF Engine Import
+# ==========================================
+try:
+    from reportlab.lib.styles import getSampleStyleSheet
+    from reportlab.platypus import (
+        Paragraph,
+        SimpleDocTemplate,
+        Spacer,
+    )
+    HAS_REPORTLAB = True
+except ImportError:
+    HAS_REPORTLAB = False
 
 
 class ChatExportService:
@@ -175,6 +182,10 @@ class ChatExportService:
     @classmethod
     def export_pdf(cls, messages):
 
+        if not HAS_REPORTLAB:
+            print("WARNING: reportlab is not installed. Falling back to plain text export.")
+            return cls.export_txt(messages)
+
         timestamp = cls._prepare()
 
         file = cls.EXPORT_FOLDER / f"chat_{timestamp}.pdf"
@@ -224,7 +235,7 @@ class ChatExportService:
             story.append(
 
                 Paragraph(
-                    f"<b>{role}</b>",
+                    f"**{role}**",
                     styles["Heading2"],
                 )
 
@@ -237,7 +248,7 @@ class ChatExportService:
                         "\n",
                         "<br/>",
                     ),
-                    styles["BodyText"],
+                    styles["BodyText"], 
                 )
 
             )
