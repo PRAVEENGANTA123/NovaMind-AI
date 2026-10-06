@@ -53,15 +53,16 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 def apply_responsive_theme():
     """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
     st.markdown("""
         
     """, unsafe_allow_html=True)
 
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
 
 # Rest of your app.py logic and navigation...
 
