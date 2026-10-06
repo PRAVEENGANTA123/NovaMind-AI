@@ -9,6 +9,7 @@ using ChromaDB.
 Supports page-aware PDF metadata.
 """
 
+import os
 import chromadb
 
 
@@ -18,6 +19,8 @@ class VectorStoreService:
     """
 
     def __init__(self):
+
+        os.makedirs("database/chroma", exist_ok=True)
 
         self.client = chromadb.PersistentClient(
             path="database/chroma"
@@ -112,13 +115,26 @@ class VectorStoreService:
                 )
 
             # ---------------------------------
+            # Normalize Embeddings
+            # ---------------------------------
+
+            if hasattr(embeddings, "tolist"):
+                normalized_embeddings = embeddings.tolist()
+            elif isinstance(embeddings, list):
+                normalized_embeddings = [
+                    e.tolist() if hasattr(e, "tolist") else e for e in embeddings
+                ]
+            else:
+                normalized_embeddings = list(embeddings)
+
+            # ---------------------------------
             # Store in ChromaDB
             # ---------------------------------
 
             self.collection.add(
                 ids=ids,
                 documents=chunks,
-                embeddings=embeddings.tolist(),
+                embeddings=normalized_embeddings,
                 metadatas=metadatas,
             )
 
@@ -140,6 +156,44 @@ class VectorStoreService:
             return False
 
     # =====================================
+    # Add Chunks Alias
+    # =====================================
+
+    def add_chunks(
+        self,
+        pdf_id,
+        chunks,
+        embeddings=None,
+        metadatas=None,
+        pages=None,
+    ):
+        """
+        Backward-compatible alias for add_pdf.
+        Automatically generates embeddings if omitted.
+        """
+
+        if embeddings is None:
+            try:
+                from services.pdf.embedding_service import EmbeddingService
+                embeddings = EmbeddingService.create_embeddings(chunks)
+            except Exception as emb_err:
+                print(f"VECTOR STORE ERROR (Embedding generation failed): {emb_err}")
+                return False
+
+        if pages is None and metadatas:
+            pages = [
+                m.get("page", 0) if isinstance(m, dict) else 0
+                for m in metadatas
+            ]
+
+        return self.add_pdf(
+            pdf_id=pdf_id,
+            chunks=chunks,
+            embeddings=embeddings,
+            pages=pages,
+        )
+
+    # =====================================
     # Search
     # =====================================
 
@@ -155,9 +209,15 @@ class VectorStoreService:
 
         try:
 
+            query_embedding_list = (
+                embedding.tolist()
+                if hasattr(embedding, "tolist")
+                else list(embedding)
+            )
+
             results = self.collection.query(
                 query_embeddings=[
-                    embedding.tolist()
+                    query_embedding_list
                 ],
                 n_results=top_k,
                 where={
