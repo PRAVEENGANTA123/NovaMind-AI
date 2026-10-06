@@ -40,17 +40,30 @@ from services.ai.orchestrator_service import AIOrchestrator
 from services.site_archiver import SiteArchiver
 from services.export.export_service import ExportService
 from services.ai.voice_service import VoiceService
+from utils.responsive import apply_responsive_layout
 
 # =========================================
 # Page Config
 # =========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | Chat",
     page_icon="💬",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+def apply_responsive_theme():
+    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
+    st.markdown("""
+        
+    """, unsafe_allow_html=True)
 
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+# Rest of your app.py logic and navigation...
 
 # =========================================
 # Authentication
