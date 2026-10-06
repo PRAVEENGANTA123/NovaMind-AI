@@ -2,8 +2,8 @@
 
 def apply_responsive_layout():
     """
-    Applies adaptive CSS rules across all viewport sizes
-    (smartphones, tablets, laptops, and ultra-wide desktops).
+    Applies responsive CSS across all devices (mobile, tablet, desktop),
+    specifically resolving bottom-dock clipping and oversized suggestion cards.
     """
     st.markdown("""
         
