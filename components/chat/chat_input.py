@@ -124,20 +124,22 @@ def show_chat_input(status_placeholder=None):
                         else:
                             st.warning(res.get("error", "Transcription failed."))
 
-    # Styling with explicit top-gap spacing
+    # Styling with explicit top-gap spacing and mobile responsive adjustments
     st.markdown("""
         <style>
-        /* Capsule Wrapper with generous spacing from above suggestions */
+        /* Capsule Wrapper with clean radius */
         div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
             background-color: #FFFFFF !important;
             background: #FFFFFF !important;
             border: 1px solid #E2E8F0 !important;
-            border-radius: 9999px !important;
+            border-radius: 28px !important;
             padding: 4px 16px !important;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
             align-items: center !important;
             margin-top: 24px !important;
             margin-bottom: 12px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
         div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor):focus-within {
@@ -202,7 +204,7 @@ def show_chat_input(status_placeholder=None):
             font-size: 15px !important;
             font-weight: 400 !important;
             padding: 4px 6px !important;
-            border-radius: 9999px !important;
+            border-radius: 20px !important;
         }
 
         /* Action buttons (Mic & Send) */
@@ -214,12 +216,43 @@ def show_chat_input(status_placeholder=None):
             color: #1E293B !important;
             font-size: 18px !important;
             padding: 4px 6px !important;
-            border-radius: 9999px !important;
+            border-radius: 50% !important;
         }
 
         div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) button[kind="secondary"]:hover {
             background: #F1F5F9 !important;
             color: #0F172A !important;
+        }
+
+        /* Mobile Viewport Fix: Prevent circle shape and maintain horizontal dock */
+        @media (max-width: 768px) {
+            div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
+                border-radius: 16px !important;
+                clip-path: none !important;
+                -webkit-clip-path: none !important;
+                aspect-ratio: auto !important;
+                height: auto !important;
+                min-height: auto !important;
+                padding: 6px 10px !important;
+                gap: 4px !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+
+            /* Prevent Streamlit from collapsing columns into a vertical stack */
+            div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) > div[data-testid="stColumn"] {
+                min-width: 0 !important;
+                flex-grow: 0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Allow the text input to take remaining horizontal space */
+            div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) > div[data-testid="stColumn"]:nth-child(2) {
+                flex-grow: 1 !important;
+                flex-shrink: 1 !important;
+                min-width: 100px !important;
+            }
         }
         </style>
     """, unsafe_allow_html=True)
