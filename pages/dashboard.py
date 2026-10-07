@@ -5,91 +5,11 @@ NovaMind AI - Dashboard
 """
 
 from datetime import datetime
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 import streamlit as st
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from utils.styles import load_css
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from services.dashboard_service import DashboardService
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from components.sidebar import show_sidebar
 from components.navbar import show_navbar
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from components.dashboard_cards import show_dashboard_cards
 from components.dashboard_activity import show_dashboard_activity
 from components.dashboard_storage import show_dashboard_storage
@@ -114,10 +34,6 @@ st.set_page_config(
 apply_responsive_layout()
 # ==========================================
 # ==========================================
-
-
-
-
 
 
 # ==========================================

@@ -31,10 +31,6 @@ st.set_page_config(
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
-# ==========================================
-# ==========================================
-
-
 
 # ==========================================
 # Authentication

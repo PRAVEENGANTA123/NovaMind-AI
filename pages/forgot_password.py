@@ -8,42 +8,22 @@ import time
 from pathlib import Path
 import streamlit as st
 
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Forgot Password",
-    page_icon="🔐",
-    layout="centered",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from authentication.forgot_password import (
-
-# ==========================================
-# Page Config
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Forgot Password",
-    page_icon="🔐",
-    layout="centered",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
     send_password_reset_otp,
     verify_otp_and_reset_password,
 )
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
+# ==========================================
+# Page Configuration
+# ==========================================
+
+st.set_page_config(
+    page_title="NovaMind AI | Forgot Password",
+    page_icon="🔐",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
 # ==========================================
 # Page Config

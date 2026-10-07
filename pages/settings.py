@@ -5,84 +5,25 @@ NovaMind AI - Settings
 """
 
 import streamlit as st  
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from utils.styles import load_css
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from components.sidebar import show_sidebar
 from components.navbar import show_navbar
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-
 from components.settings_header import show_settings_header
 from components.appearance_settings import show_appearance_settings
-from utils.responsive import apply_responsive_layout
+
 from services.settings_service import (
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
     load_settings,
     save_settings,
 )
-
 # ==========================================
+# Page Configuration
 # ==========================================
 
-
+st.set_page_config(
+    page_title="NovaMind AI | Settings",
+    page_icon="⚙️",
+    layout="wide",
+)
 st.session_state["current_page"] = "Settings"
 
  
@@ -134,21 +75,6 @@ with st.container(border=True):
 # AI Preferences
 # ==========================================
 from components.ai_settings import (
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
     show_ai_settings
 )
 with st.container(border=True):
@@ -159,21 +85,6 @@ with st.container(border=True):
 # ==========================================
 
 from components.notification_settings import (
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
     show_notification_settings
 )
 with st.container(border=True):
@@ -185,21 +96,6 @@ with st.container(border=True):
 # Privacy
 # ==========================================
 from components.privacy_settings import (
-
-# ==========================================
-# Page Configuration
-# ==========================================
-
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
     show_privacy_settings
 )
 with st.container(border=True):
