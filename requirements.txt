@@ -29,3 +29,7 @@ fpdf2>=2.7.9
 fpdf2>=2.7.9
 
 email-validator>=2.1.0
+
+gTTS>=2.5.0
+SpeechRecognition>=3.10.0
+pydub>=0.25.1
