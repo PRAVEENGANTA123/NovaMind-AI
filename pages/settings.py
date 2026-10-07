@@ -25,6 +25,11 @@ from services.settings_service import (
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
+st.set_page_config(
+    page_title="NovaMind AI | Settings",
+    page_icon="⚙️",
+    layout="wide",
+)
 st.session_state["current_page"] = "Settings"
 
  

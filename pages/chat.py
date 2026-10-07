@@ -49,7 +49,15 @@ from utils.responsive import apply_responsive_layout
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
+# =========================================
+# Page Config
+# =========================================
 
+st.set_page_config(
+    page_title="NovaMind AI | Chat",
+    page_icon="💬",
+    layout="wide",
+)
 
 # Rest of your app.py logic and navigation...
 

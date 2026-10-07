@@ -18,10 +18,17 @@ from utils.responsive import apply_responsive_layout
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
+# ==========================================
+# Page Configuration
+# ==========================================
 
+st.set_page_config(
+    page_title="NovaMind AI | Forgot Password",
+    page_icon="🔐",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
-
-# Rest of your app.py logic and navigation...
 
 def hide_sidebar():
     st.markdown("""

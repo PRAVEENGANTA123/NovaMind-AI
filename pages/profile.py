@@ -21,6 +21,15 @@ from utils.responsive import apply_responsive_layout
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
+# ==========================================
+# Page Config
+# ==========================================
+
+st.set_page_config(
+    page_title="NovaMind AI | Profile",
+    page_icon="👤",
+    layout="wide",
+)
 
 # ==========================================
 # Authentication

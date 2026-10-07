@@ -24,11 +24,21 @@ from components.history.filter_bar import (
 from components.history.history_list import (
     show_history_list,
 )
-
 from services.chat.chat_service import ChatService
+from utils.responsive import apply_responsive_layout
 
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
 # ==========================================
+# Page Config
 # ==========================================
+
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide",
+)
 
 
 # ==========================================

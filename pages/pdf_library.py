@@ -17,8 +17,16 @@ from utils.responsive import apply_responsive_layout
     
 # ==========================================
 # ==========================================
-
 apply_responsive_layout()
+# ==========================================
+# Page Config
+# ==========================================
+
+st.set_page_config(
+    page_title="NovaMind AI | PDF Library",
+    page_icon="📄",
+    layout="wide",
+)
 
 st.session_state["current_page"] = "PDF Library"
 

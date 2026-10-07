@@ -10,12 +10,19 @@ import streamlit as st
 from authentication.login import login_user
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
-# ==========================================
-# ==========================================
-
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
+# ==========================================
+# Page Configuration
+# ==========================================
+
+st.set_page_config(
+    page_title="NovaMind AI | Login",
+    page_icon="🤖",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
 # ==========================================
 # Hide Streamlit Navigation
