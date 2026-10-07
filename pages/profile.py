@@ -17,19 +17,24 @@ from components.profile_dashboard import show_profile_dashboard
 from utils.responsive import apply_responsive_layout
 
 # ==========================================
-# ==========================================
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
-# ==========================================
 # Page Config
 # ==========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | Profile",
     page_icon="👤",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+# ==========================================
+# ==========================================
+
+
 
 # ==========================================
 # Authentication

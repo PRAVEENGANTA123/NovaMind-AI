@@ -8,33 +8,99 @@ Chat with one uploaded PDF.
 
 import streamlit as st
 
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Chat",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 from utils.styles import load_css
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Chat",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
 
 from components.sidebar import show_sidebar
 from components.navbar import show_navbar
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Chat",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
 
 from components.pdf.chat_window import show_chat_window
 from components.pdf.chat_input import show_chat_input
 from components.pdf.source_cards import show_source_cards
 from services.pdf.pdf_service import PDFService
 from services.pdf.pdf_chat_history_service import (
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Chat",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
     PDFChatHistoryService,
 )
 from utils.responsive import apply_responsive_layout
 
 # ==========================================
-# ==========================================
-
-apply_responsive_layout()
-# ==========================================
 # Page Config
 # ==========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | PDF Chat",
     page_icon="📄",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+# ==========================================
+# ==========================================
+
+
 
 
 # ==========================================

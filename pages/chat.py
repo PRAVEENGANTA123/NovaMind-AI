@@ -27,6 +27,21 @@ import streamlit as st
 import re
 from utils.styles import load_css
 
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | Chat",
+    page_icon="💬",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 from components.sidebar import show_sidebar
 from components.navbar import show_navbar
 from components.chat.chat_header import show_chat_header
@@ -42,22 +57,27 @@ from services.export.export_service import ExportService
 from services.ai.voice_service import VoiceService
 from utils.responsive import apply_responsive_layout
 
-# =========================================
-# =========================================
+# ==========================================
+# Page Config
+# ==========================================
 
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | Chat",
+    page_icon="💬",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
 # =========================================
-# Page Config
 # =========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | Chat",
-    page_icon="💬",
-    layout="wide",
-)
+
+
+
 
 # Rest of your app.py logic and navigation...
 

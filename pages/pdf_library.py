@@ -6,27 +6,78 @@ NovaMind AI - PDF Library
 
 import streamlit as st
 
-from utils.styles import load_css
-
-from components.sidebar import show_sidebar
-from components.navbar import show_navbar
-
-from components.pdf.pdf_upload import show_pdf_upload
-from components.pdf.pdf_list import show_pdf_list
-from utils.responsive import apply_responsive_layout
-    
 # ==========================================
-# ==========================================
-apply_responsive_layout()
-# ==========================================
-# Page Config
+# Page Configuration
 # ==========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | PDF Library",
     page_icon="📄",
     layout="wide",
+    initial_sidebar_state="auto"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+from utils.styles import load_css
+
+# ==========================================
+# Page Configuration
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Library",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+from components.sidebar import show_sidebar
+from components.navbar import show_navbar
+
+# ==========================================
+# Page Configuration
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Library",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+from components.pdf.pdf_upload import show_pdf_upload
+from components.pdf.pdf_list import show_pdf_list
+from utils.responsive import apply_responsive_layout
+
+# ==========================================
+# Page Configuration
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | PDF Library",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+    
+# ==========================================
+# ==========================================
+
 
 st.session_state["current_page"] = "PDF Library"
 

@@ -8,37 +8,125 @@ Professional conversation history page.
 
 import streamlit as st
 
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 from utils.styles import load_css
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
 
 from components.sidebar import show_sidebar
 from components.navbar import show_navbar
 
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
 from components.history.search_bar import (
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
     show_history_search,
 )
 
 from components.history.filter_bar import (
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
     show_history_filters,
 )
 
 from components.history.history_list import (
+
+# ==========================================
+# Page Config
+# ==========================================
+
+# MUST be the first Streamlit command
+st.set_page_config(
+    page_title="NovaMind AI | History",
+    page_icon="🕒",
+    layout="wide"
+)
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
     show_history_list,
 )
 from services.chat.chat_service import ChatService
 from utils.responsive import apply_responsive_layout
 
-
-# Apply device-flexible styling (mobile, tablet, desktop)
-apply_responsive_layout()
 # ==========================================
 # Page Config
 # ==========================================
 
+# MUST be the first Streamlit command
 st.set_page_config(
     page_title="NovaMind AI | History",
     page_icon="🕒",
-    layout="wide",
+    layout="wide"
 )
+
+# Apply device-flexible styling (mobile, tablet, desktop)
+apply_responsive_layout()
+
+
+
 
 
 # ==========================================
