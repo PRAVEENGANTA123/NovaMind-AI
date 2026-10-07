@@ -3,7 +3,8 @@ NovaMind AI - Voice Assistant Service
 ====================================
 Handles Speech-to-Text (STT) transcription and
 Text-to-Speech (TTS) audio synthesis for user interactions.
-Features defensive lazy imports for resilient cloud execution.
+Features automated browser audio decoding and defensive lazy imports
+for resilient cloud execution.
 """
 
 from io import BytesIO
@@ -32,6 +33,14 @@ except ImportError:
     HAS_SR = False
     logger.warning("SpeechRecognition not installed. Audio transcription disabled.")
 
+try:
+    from pydub import AudioSegment
+    HAS_PYDUB = True
+except ImportError:
+    AudioSegment = None
+    HAS_PYDUB = False
+    logger.warning("pydub not installed. Browser audio format conversion disabled.")
+
 
 class VoiceService:
     @staticmethod
@@ -45,10 +54,11 @@ class VoiceService:
 
         # Remove URLs
         text = re.sub(r"https?://\S+", "", text)
-        # Remove markdown headers and formatting (*, #, _, `, >)
-        text = re.sub(r"[*#_`>~]", "", text)
-        # Remove code blocks
+        # Remove code blocks and inline code
         text = re.sub(r"```[\s\S]*?```", "", text)
+        text = re.sub(r"`[^`]*`", "", text)
+        # Remove markdown symbols (*, #, _, >, ~, etc.)
+        text = re.sub(r"[*#_>~]", "", text)
         # Normalize whitespace
         text = re.sub(r"\s+", " ", text).strip()
 
@@ -76,14 +86,39 @@ class VoiceService:
             fp.seek(0)
             return fp.read()
         except Exception as e:
-            logger.error(f"⚠️ TTS Synthesis Error: {e}")
+            logger.error(f"TTS Synthesis Error: {e}")
             return None
 
-    @staticmethod
-    def speech_to_text(audio_bytes: bytes) -> Dict[str, Any]:
+    @classmethod
+    def _convert_to_wav(cls, audio_bytes: bytes) -> Optional[BytesIO]:
         """
-        Transcribes audio bytes (WAV/Audio recording) into plain text.
-        Returns a structured dictionary indicating status or error.
+        Decodes incoming browser audio (WebM, OGG, MP4, WAV) into standard PCM WAV buffer.
+        """
+        if not audio_bytes:
+            return None
+
+        input_buffer = BytesIO(audio_bytes)
+
+        if HAS_PYDUB and AudioSegment is not None:
+            try:
+                segment = AudioSegment.from_file(input_buffer)
+                wav_buffer = BytesIO()
+                segment.export(wav_buffer, format="wav")
+                wav_buffer.seek(0)
+                return wav_buffer
+            except Exception as e:
+                logger.warning(f"Audio conversion with pydub failed, falling back to raw buffer: {e}")
+                input_buffer.seek(0)
+                return input_buffer
+
+        input_buffer.seek(0)
+        return input_buffer
+
+    @classmethod
+    def speech_to_text(cls, audio_bytes: bytes, language: str = "en-US") -> Dict[str, Any]:
+        """
+        Transcribes audio bytes into plain text using SpeechRecognition.
+        Automatically converts browser audio formats to PCM WAV.
         """
         if not HAS_SR or sr is None:
             return {
@@ -95,12 +130,17 @@ class VoiceService:
         if not audio_bytes:
             return {"success": False, "text": "", "error": "No audio received."}
 
-        recognizer = sr.Recognizer()
         try:
-            audio_file = BytesIO(audio_bytes)
-            with sr.AudioFile(audio_file) as source:
+            wav_stream = cls._convert_to_wav(audio_bytes)
+            if wav_stream is None:
+                return {"success": False, "text": "", "error": "Could not parse audio input."}
+
+            recognizer = sr.Recognizer()
+            with sr.AudioFile(wav_stream) as source:
+                # Calibrate for ambient noise
+                recognizer.adjust_for_ambient_noise(source, duration=0.2)
                 audio_data = recognizer.record(source)
-                transcribed = recognizer.recognize_google(audio_data)
+                transcribed = recognizer.recognize_google(audio_data, language=language)
 
                 return {
                     "success": True,
@@ -111,7 +151,14 @@ class VoiceService:
             return {
                 "success": False,
                 "text": "",
-                "error": "Speech was unclear. Please try speaking again.",
+                "error": "Speech was unclear. Please speak clearly and try again.",
+            }
+        except sr.RequestError as e:
+            logger.error(f"Speech recognition service error: {e}")
+            return {
+                "success": False,
+                "text": "",
+                "error": "Transcription service temporarily unreachable. Check internet connection.",
             }
         except Exception as e:
             logger.error(f"Audio transcription failed: {e}")
