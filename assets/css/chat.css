@@ -150,7 +150,7 @@ div[data-testid="chat-message-user"] div[data-testid="stTextInput"] div[data-bas
 div[data-testid="chat-message-user"] div[data-testid="stTextInput"] div[data-baseweb="input"] {
     background: #FFFFFF !important;
     border: 1px solid #94A3B8 !important;
-    border-radius: 9999px !important;
+    border-radius: 30px !important;
     box-shadow: none !important;
     padding: 2px 14px !important;
 }
@@ -174,7 +174,7 @@ button[key*="cancel_btn_"] {
     color: #1E293B !important;
     font-size: 15px !important;
     font-weight: 500 !important;
-    border-radius: 9999px !important;
+    border-radius: 30px !important;
     padding: 6px 16px !important;
 }
 
@@ -189,7 +189,7 @@ button[key*="update_btn_"] {
     color: #475569 !important;
     font-size: 15px !important;
     font-weight: 500 !important;
-    border-radius: 9999px !important;
+    border-radius: 30px !important;
     padding: 6px 18px !important;
 }
 
@@ -354,7 +354,7 @@ div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
     background-color: #FFFFFF !important;
     background: #FFFFFF !important;
     border: 1px solid #E2E8F0 !important;
-    border-radius: 9999px !important;
+    border-radius: 30px !important;
     padding: 6px 14px !important;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06) !important;
     display: flex !important;
@@ -564,5 +564,81 @@ div:has(> .chat-prompt) {
         padding-right: 1rem !important;
         padding-top: 6rem !important;
         padding-bottom: 6rem !important;
+    }
+}
+/* Universal Mobile Chat Input Dock Normalization */
+@media (max-width: 768px) {
+  .chat-dock, .stChatInput, .chat-input-wrapper, div[class*="chat"] {
+    border-radius: 16px !important;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ==========================================================
+   MOBILE OMNIBAR RESPONSIVE DOCK (Overrides circle warping)
+   ========================================================== */
+@media (max-width: 768px) {
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) {
+        border-radius: 16px !important;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        aspect-ratio: auto !important;
+        padding: 10px 12px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        background: #FFFFFF !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    /* Text input takes the entire top row */
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(2) {
+        order: 1 !important;
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        min-width: 100% !important;
+    }
+
+    /* Action buttons align side-by-side on the bottom row */
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child {
+        order: 2 !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+    }
+
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(3) {
+        order: 3 !important;
+        flex: 1 1 auto !important;
+        width: auto !important;
+    }
+
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:nth-child(4) {
+        order: 4 !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+    }
+
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:last-child {
+        order: 5 !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+    }
+
+    /* Keep individual buttons round without affecting the card */
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) button {
+        border-radius: 50% !important;
+    }
+
+    div[data-testid="stHorizontalBlock"]:has(#novamind-omnibar-anchor) div[data-testid="stColumn"]:first-child button {
+        border-radius: 18px !important;
     }
 }
