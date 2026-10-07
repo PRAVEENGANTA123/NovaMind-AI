@@ -82,7 +82,7 @@ pdf_id = st.session_state.get("selected_pdf")
 
 if not pdf_id:
 
-    st.warning("âš  Please select a PDF first.")
+    st.warning("⚠️  Please select a PDF first.")
 
     st.stop()
 
@@ -167,9 +167,9 @@ if not st.session_state.pdf_messages:
 # Header
 # ==========================================
 
-st.title("ðŸ’¬ Chat with PDF")
+st.title("💬 Chat with PDF")
 
-st.caption(f"ðŸ“„ {pdf['filename']}")
+st.caption(f"📄 {pdf['filename']}")
 
 st.write(
     "Ask questions, summarize content, and explore your uploaded document."

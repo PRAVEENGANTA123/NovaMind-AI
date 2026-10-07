@@ -133,7 +133,7 @@ with st.form("otp_form"):
     )
 
     verify_btn = st.form_submit_button(
-        "Verify Email â†’",
+        "Verify Email →",
         use_container_width=True
     )
 
@@ -187,7 +187,7 @@ col1, col2 = st.columns(2)
 with col1:
 
     if st.button(
-        "ðŸ”„ Resend OTP",
+        "🔄 Resend OTP",
         use_container_width=True
     ):
 
@@ -210,7 +210,7 @@ with col1:
 with col2:
 
     if st.button(
-        "â† Back to Login",
+        "← Back to Login",
         use_container_width=True
     ):
 
@@ -221,5 +221,5 @@ with col2:
 # ==========================================
 
 st.caption(
-    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
+    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
 )

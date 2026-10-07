@@ -83,7 +83,7 @@ with col2:
         font-size:18px;
         margin-top:8px;
     ">
-        Welcome back ðŸ‘‹<br>
+        Welcome back 👋<br>
         Sign in to access your AI Workspace.
     </p>
     """, unsafe_allow_html=True)
@@ -110,7 +110,7 @@ with st.form("login_form"):
     remember = st.checkbox("Keep me signed in")
 
     login_btn = st.form_submit_button(
-        "Sign In â†’",
+        "Sign In →",
         use_container_width=True
     )
 
@@ -176,7 +176,7 @@ col1, col2 = st.columns(2)
 with col1:
 
     if st.button(
-        "ðŸ”‘ Forgot Password",
+        "🔑 Forgot Password",
         use_container_width=True
     ):
         st.switch_page("pages/forgot_password.py")
@@ -184,7 +184,7 @@ with col1:
 with col2:
 
     if st.button(
-        "ðŸ“ Create Account",
+        "📝 Create Account",
         use_container_width=True
     ):
         st.switch_page("pages/register.py")
@@ -192,5 +192,5 @@ with col2:
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.caption(
-    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
+    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
 )

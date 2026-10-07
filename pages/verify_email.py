@@ -91,7 +91,7 @@ if token:
 
     if success:
 
-        st.success("âœ… " + message)
+        st.success("✅ " + message)
 
         st.balloons()
 
@@ -116,7 +116,7 @@ else:
 st.divider()
 
 if st.button(
-    "â† Go to Login",
+    "← Go to Login",
     use_container_width=True
 ):
     st.switch_page("pages/login.py")
@@ -126,5 +126,5 @@ if st.button(
 # ==========================================
 
 st.caption(
-    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
+    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
 )

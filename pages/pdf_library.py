@@ -58,7 +58,7 @@ show_navbar(is_chat=False)
 # Header
 # ==========================================
 
-st.title("ðŸ“„ PDF Library")
+st.title("📄 PDF Library")
 st.caption("Upload, manage, and chat with your PDF documents.")
 
 st.divider()

@@ -77,7 +77,7 @@ show_navbar(is_chat=False)
 # Header
 # ==========================================
 
-st.title("ðŸ•’ Chat History")
+st.title("🕒 Chat History")
 
 st.caption(
     "Browse, search and manage all your AI conversations."
@@ -131,7 +131,7 @@ with left:
 with right:
 
     if st.button(
-        "ðŸ”„ Refresh",
+        "🔄 Refresh",
         width="stretch",
     ):
 

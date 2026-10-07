@@ -109,7 +109,7 @@ with st.container(border=True):
 
 with st.container(border=True):
 
-    st.subheader("ðŸŒ General")
+    st.subheader("🌐 General")
 
     languages = [
         "English",
@@ -171,7 +171,7 @@ session_timeout = privacy["session_timeout"]
 st.markdown("<br>", unsafe_allow_html=True)
 
 if st.button(
-    "ðŸ’¾ Save Settings",
+    "💾 Save Settings",
     width="stretch",
 ):
 

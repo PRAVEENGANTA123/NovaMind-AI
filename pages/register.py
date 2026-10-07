@@ -82,7 +82,7 @@ st.markdown("""
 
 <p>
 
-Create your account ðŸš€
+Create your account 🚀
 
 <br>
 
@@ -126,7 +126,7 @@ with st.form("register_form"):
     )
 
     register_btn = st.form_submit_button(
-        "Create Account â†’",
+        "Create Account →",
         use_container_width=True
     )
 
@@ -202,11 +202,11 @@ if register_btn:
 st.markdown("---")
 
 if st.button(
-    "â† Back to Sign In",
+    "← Back to Sign In",
     use_container_width=True
 ):
     st.switch_page("pages/login.py")
 
 st.caption(
-    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
+    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
 )

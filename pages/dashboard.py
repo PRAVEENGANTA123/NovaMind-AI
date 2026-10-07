@@ -90,17 +90,17 @@ username = stats.get("username", "User")
 now = datetime.now()
 
 if now.hour < 12:
-    greeting = "Good Morning â˜€ï¸"
+    greeting = "Good Morning ☀️"
 elif now.hour < 17:
-    greeting = "Good Afternoon ðŸŒ¤ï¸"
+    greeting = "Good Afternoon 🌤️"
 else:
-    greeting = "Good Evening ðŸŒ™"
+    greeting = "Good Evening 🌙"
 
 left, right = st.columns([5, 1])
 
 with left:
 
-    st.title(f"ðŸ‘‹ Welcome back, {username}")
+    st.title(f"👋 Welcome back, {username}")
 
     st.subheader(greeting)
 
@@ -132,7 +132,7 @@ st.divider()
 # ==========================================
 
 if st.button(
-    "ðŸ”„ Refresh Dashboard",
+    "🔄 Refresh Dashboard",
     use_container_width=False,
 ):
     st.rerun()
@@ -155,7 +155,7 @@ with left:
 
     with st.container(border=True):
 
-        st.subheader("ðŸ“ˆ Chat Activity")
+        st.subheader("📈 Chat Activity")
 
         show_dashboard_activity(email)
 
