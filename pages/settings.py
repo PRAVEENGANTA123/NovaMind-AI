@@ -18,22 +18,10 @@ from services.settings_service import (
     load_settings,
     save_settings,
 )
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 
 # ==========================================
-# Page Configuration
 # ==========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | Settings",
-    page_icon="⚙️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
@@ -122,7 +110,7 @@ with st.container(border=True):
 
 with st.container(border=True):
 
-    st.subheader("🌍 General")
+    st.subheader("ðŸŒ General")
 
     languages = [
         "English",
@@ -184,7 +172,7 @@ session_timeout = privacy["session_timeout"]
 st.markdown("<br>", unsafe_allow_html=True)
 
 if st.button(
-    "💾 Save Settings",
+    "ðŸ’¾ Save Settings",
     width="stretch",
 ):
 

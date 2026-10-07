@@ -23,25 +23,12 @@ from components.dashboard_quick_actions import show_dashboard_quick_actions
 from components.recent_chats import show_recent_chats
 from utils.responsive import apply_responsive_layout
 # ==========================================
-# Page Config
 # ==========================================
 
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Dashboard",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 
 
 # Rest of your app.py logic and navigation...
@@ -100,17 +87,17 @@ username = stats.get("username", "User")
 now = datetime.now()
 
 if now.hour < 12:
-    greeting = "Good Morning ☀️"
+    greeting = "Good Morning â˜€ï¸"
 elif now.hour < 17:
-    greeting = "Good Afternoon 🌤️"
+    greeting = "Good Afternoon ðŸŒ¤ï¸"
 else:
-    greeting = "Good Evening 🌙"
+    greeting = "Good Evening ðŸŒ™"
 
 left, right = st.columns([5, 1])
 
 with left:
 
-    st.title(f"👋 Welcome back, {username}")
+    st.title(f"ðŸ‘‹ Welcome back, {username}")
 
     st.subheader(greeting)
 
@@ -142,7 +129,7 @@ st.divider()
 # ==========================================
 
 if st.button(
-    "🔄 Refresh Dashboard",
+    "ðŸ”„ Refresh Dashboard",
     use_container_width=False,
 ):
     st.rerun()
@@ -165,7 +152,7 @@ with left:
 
     with st.container(border=True):
 
-        st.subheader("📈 Chat Activity")
+        st.subheader("ðŸ“ˆ Chat Activity")
 
         show_dashboard_activity(email)
 

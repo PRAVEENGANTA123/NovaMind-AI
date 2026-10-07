@@ -11,20 +11,7 @@ from authentication.login import login_user
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
 # ==========================================
-# Page Configuration
 # ==========================================
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Login",
-    page_icon="🤖",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 
 
 # Apply device-flexible styling (mobile, tablet, desktop)
@@ -85,7 +72,7 @@ with col2:
         font-size:18px;
         margin-top:8px;
     ">
-        Welcome back 👋<br>
+        Welcome back ðŸ‘‹<br>
         Sign in to access your AI Workspace.
     </p>
     """, unsafe_allow_html=True)
@@ -112,7 +99,7 @@ with st.form("login_form"):
     remember = st.checkbox("Keep me signed in")
 
     login_btn = st.form_submit_button(
-        "Sign In →",
+        "Sign In â†’",
         use_container_width=True
     )
 
@@ -178,7 +165,7 @@ col1, col2 = st.columns(2)
 with col1:
 
     if st.button(
-        "🔑 Forgot Password",
+        "ðŸ”‘ Forgot Password",
         use_container_width=True
     ):
         st.switch_page("pages/forgot_password.py")
@@ -186,7 +173,7 @@ with col1:
 with col2:
 
     if st.button(
-        "📝 Create Account",
+        "ðŸ“ Create Account",
         use_container_width=True
     ):
         st.switch_page("pages/register.py")
@@ -194,5 +181,5 @@ with col2:
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.caption(
-    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
+    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
 )

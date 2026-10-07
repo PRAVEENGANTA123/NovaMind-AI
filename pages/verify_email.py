@@ -11,11 +11,6 @@ from authentication import verify_email
 from authentication.verify_email import verify_email_token
 from utils.styles import load_css
 
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 
 # ==========================================
 # Load CSS
@@ -96,7 +91,7 @@ if token:
 
     if success:
 
-        st.success("✅ " + message)
+        st.success("âœ… " + message)
 
         st.balloons()
 
@@ -106,7 +101,7 @@ if token:
 
     else:
 
-        st.error("❌ " + message)
+        st.error("âŒ " + message)
 
 else:
 
@@ -121,7 +116,7 @@ else:
 st.divider()
 
 if st.button(
-    "← Go to Login",
+    "â† Go to Login",
     use_container_width=True
 ):
     st.switch_page("pages/login.py")
@@ -131,5 +126,5 @@ if st.button(
 # ==========================================
 
 st.caption(
-    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
+    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
 )

@@ -14,22 +14,10 @@ from components.navbar import show_navbar
 from components.pdf.pdf_upload import show_pdf_upload
 from components.pdf.pdf_list import show_pdf_list
 from utils.responsive import apply_responsive_layout
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
     
 # ==========================================
-# Page Configuration
 # ==========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | PDF Library",
-    page_icon="📄",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 apply_responsive_layout()
 
 st.session_state["current_page"] = "PDF Library"
@@ -60,7 +48,7 @@ show_navbar(is_chat=False)
 # Header
 # ==========================================
 
-st.title("📄 PDF Library")
+st.title("ðŸ“„ PDF Library")
 st.caption("Upload, manage, and chat with your PDF documents.")
 
 st.divider()
@@ -72,7 +60,7 @@ st.divider()
 email = st.session_state.get("email")
 
 if not email:
-    st.error("❌ User session not found.")
+    st.error("âŒ User session not found.")
     st.stop()
 
 # ==========================================

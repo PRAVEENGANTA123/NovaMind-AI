@@ -9,21 +9,9 @@ import streamlit as st
 from authentication.register import register_user
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 # ==========================================
-# Page Configuration
 # ==========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | Register",
-    page_icon="📝",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 # ==========================================
@@ -79,7 +67,7 @@ st.markdown("""
 
 <p>
 
-Create your account 🚀
+Create your account ðŸš€
 
 <br>
 
@@ -123,7 +111,7 @@ with st.form("register_form"):
     )
 
     register_btn = st.form_submit_button(
-        "Create Account →",
+        "Create Account â†’",
         use_container_width=True
     )
 
@@ -199,11 +187,11 @@ if register_btn:
 st.markdown("---")
 
 if st.button(
-    "← Back to Sign In",
+    "â† Back to Sign In",
     use_container_width=True
 ):
     st.switch_page("pages/login.py")
 
 st.caption(
-    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
+    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
 )

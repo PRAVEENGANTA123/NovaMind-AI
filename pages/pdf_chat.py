@@ -22,21 +22,9 @@ from services.pdf.pdf_chat_history_service import (
 )
 from utils.responsive import apply_responsive_layout
 
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 # ==========================================
-# Page Config
 # ==========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | PDF Chat",
-    page_icon="📄",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
 apply_responsive_layout()
 
 # ==========================================
@@ -77,7 +65,7 @@ pdf_id = st.session_state.get("selected_pdf")
 
 if not pdf_id:
 
-    st.warning("⚠ Please select a PDF first.")
+    st.warning("âš  Please select a PDF first.")
 
     st.stop()
 
@@ -89,7 +77,7 @@ pdf = PDFService.get_pdf(pdf_id)
 
 if not pdf:
 
-    st.error("❌ PDF not found.")
+    st.error("âŒ PDF not found.")
 
     st.stop()
 
@@ -162,9 +150,9 @@ if not st.session_state.pdf_messages:
 # Header
 # ==========================================
 
-st.title("💬 Chat with PDF")
+st.title("ðŸ’¬ Chat with PDF")
 
-st.caption(f"📄 {pdf['filename']}")
+st.caption(f"ðŸ“„ {pdf['filename']}")
 
 st.write(
     "Ask questions, summarize content, and explore your uploaded document."

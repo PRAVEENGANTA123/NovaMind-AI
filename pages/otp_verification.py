@@ -13,21 +13,9 @@ from authentication.verify_otp import verify_otp
 from authentication.otp_service import resend_email_otp
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 # ==========================================
-# Page Configuration
 # ==========================================
 
-st.set_page_config(
-    page_title="NovaMind AI | Verify Email",
-    page_icon="🔐",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
@@ -128,7 +116,7 @@ with st.form("otp_form"):
     )
 
     verify_btn = st.form_submit_button(
-        "Verify Email →",
+        "Verify Email â†’",
         use_container_width=True
     )
 
@@ -182,7 +170,7 @@ col1, col2 = st.columns(2)
 with col1:
 
     if st.button(
-        "🔄 Resend OTP",
+        "ðŸ”„ Resend OTP",
         use_container_width=True
     ):
 
@@ -205,7 +193,7 @@ with col1:
 with col2:
 
     if st.button(
-        "← Back to Login",
+        "â† Back to Login",
         use_container_width=True
     ):
 
@@ -216,5 +204,5 @@ with col2:
 # ==========================================
 
 st.caption(
-    "Powered by Gemini AI • NovaMind AI v2.0 © 2026"
+    "Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026"
 )

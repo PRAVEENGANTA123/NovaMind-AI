@@ -15,22 +15,10 @@ from authentication.forgot_password import (
 from utils.styles import load_css
 from utils.responsive import apply_responsive_layout
 
-# MUST be the first Streamlit command
-st.set_page_config(
-    page_title="NovaMind AI | Forgot Password",
-    page_icon="🔐",
-    layout="centered",
-    initial_sidebar_state="auto"
-)
 
 # Apply device-flexible styling (mobile, tablet, desktop)
 apply_responsive_layout()
 
-def apply_responsive_theme():
-    """Inject universal responsive styling for all viewports (mobile, tablet, desktop)."""
-    st.markdown("""
-        
-    """, unsafe_allow_html=True)
 
 
 # Rest of your app.py logic and navigation...
@@ -77,7 +65,7 @@ if not st.session_state.reset_email_sent:
             placeholder="name@example.com",
             value=st.session_state.reset_email
         )
-        send_btn = st.form_submit_button("Send Verification Code →", use_container_width=True)
+        send_btn = st.form_submit_button("Send Verification Code â†’", use_container_width=True)
 
     if send_btn:
         email = email_input.strip().lower()
@@ -118,7 +106,7 @@ else:
             type="password",
             placeholder="Repeat new password"
         )
-        submit_reset = st.form_submit_button("Reset Password →", use_container_width=True)
+        submit_reset = st.form_submit_button("Reset Password â†’", use_container_width=True)
 
     if submit_reset:
         with st.spinner("Updating password securely..."):
@@ -129,7 +117,7 @@ else:
                 confirm_password=confirm_password,
             )
         if success:
-            st.success("✅ Password updated successfully! Redirecting to Login...")
+            st.success("âœ… Password updated successfully! Redirecting to Login...")
             st.session_state.reset_email_sent = False
             st.session_state.reset_email = ""
             time.sleep(1.5)
@@ -137,12 +125,12 @@ else:
         else:
             st.error(msg)
 
-    if st.button("← Use a different email"):
+    if st.button("â† Use a different email"):
         st.session_state.reset_email_sent = False
         st.rerun()
 
 st.markdown("---")
-if st.button("← Back to Login", use_container_width=True):
+if st.button("â† Back to Login", use_container_width=True):
     st.switch_page("pages/login.py")
 
-st.caption("Powered by Gemini AI • NovaMind AI v2.0 © 2026")
+st.caption("Powered by Gemini AI â€¢ NovaMind AI v2.0 Â© 2026")
